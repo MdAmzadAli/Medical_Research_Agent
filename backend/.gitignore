@@ -1,0 +1,45 @@
+# ===== ENVIRONMENT FILES =====
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# applies to root, api/, and ai-service/
+**/.env
+**/.env.local
+**/.env.development
+**/.env.production
+**/.env.test
+
+# ===== API (Express / Node) =====
+api/node_modules/
+api/dist/
+api/.npm
+api/npm-debug.log*
+api/yarn-debug.log*
+api/yarn-error.log*
+
+# ===== AI-SERVICE (Python / FastAPI) =====
+ai-service/venv/
+ai-service/.venv/
+ai-service/__pycache__/
+ai-service/**/__pycache__/
+ai-service/**/*.pyc
+ai-service/**/*.pyo
+ai-service/**/*.pyd
+ai-service/.pytest_cache/
+ai-service/.mypy_cache/
+ai-service/*.egg-info/
+ai-service/dist/
+ai-service/build/
+ai-service/.python-version
+
+# ===== GENERAL =====
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+.vscode/
+.idea/
