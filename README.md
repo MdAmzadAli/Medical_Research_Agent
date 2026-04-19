@@ -23,6 +23,8 @@ An intelligent medical research assistant that answers health queries using evid
 ---
 
 ## 🏗️ Architecture
+
+```
 ┌─────────────────┐        ┌──────────────────────┐        ┌─────────────────────┐
 │                 │        │                      │        │                     │
 │  React Frontend │──────▶ │  Express API (Node)  │──────▶ │ FastAPI AI Service  │
@@ -36,6 +38,7 @@ An intelligent medical research assistant that answers health queries using evid
 │  Atlas      │              │ Transformers +  │
 │             │              │ Gemini API      │
 └─────────────┘              └─────────────────┘
+```
 
 **Request flow:**
 1. User sends query → Express API
@@ -49,6 +52,8 @@ An intelligent medical research assistant that answers health queries using evid
 ---
 
 ## 📁 Project Structure
+
+```
 medical-research-agent/
 ├── backend/
 │   ├── api/                          # Express.js REST API
