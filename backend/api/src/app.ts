@@ -13,8 +13,30 @@ app.use(express.json());
 app.use("/api", chatRoutes);
 
 // health check
-app.get("/", (req, res) => {
-  res.send("API is running 🚀");
+app.get("/health", async (req, res) => {
+  try {
+    const aiServiceUrl = process.env.AI_SERVICE_URL||"http://localhost:8000";
+    const aiResponse = await fetch(`${aiServiceUrl}/health`);
+    const aiStatus = aiResponse.ok ? "healthy" : "unhealthy";
+
+    res.json({
+      status: "healthy",
+      services: {
+        api: "healthy",
+        ai_service: aiStatus,
+      },
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    res.status(207).json({
+      status: "degraded",
+      services: {
+        api: "healthy",
+        ai_service: "unreachable",
+      },
+      timestamp: new Date().toISOString(),
+    });
+  }
 });
 
 app.use(errorMiddleware);

@@ -17,6 +17,6 @@ app.add_middleware(
 # register routes
 app.include_router(ai_router_test)
 
-@app.get("/")
+@app.get("/health")
 def root():
     return {"message": "AI Service Running 🚀"}
