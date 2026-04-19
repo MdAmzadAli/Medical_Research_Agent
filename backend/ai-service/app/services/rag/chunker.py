@@ -26,7 +26,7 @@ def clean_text(text: str) -> str:
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
-def chunk_paper(paper: dict, max_chars: int = 1000) -> list[Chunk]:
+def chunk_paper(paper: dict, max_chars: int = 600) -> list[Chunk]:
     """
     Split a paper's abstract into overlapping chunks with full metadata.
     Each chunk is ~1000 chars with 200 char overlap to avoid cutting mid-sentence.
@@ -38,7 +38,7 @@ def chunk_paper(paper: dict, max_chars: int = 1000) -> list[Chunk]:
 
     chunks = []
     start = 0
-    overlap = 200
+    overlap = 120
     idx = 0
 
     while start < len(text):

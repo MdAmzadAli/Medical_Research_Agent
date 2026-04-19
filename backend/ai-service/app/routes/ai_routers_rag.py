@@ -25,21 +25,23 @@ async def answer_medical_query(body: RankRequest) -> dict:
     # print("=" * 50)
     print(f"[rank] query={body.query}, items={len(body.items)}")
 
-    relevant_papers = filter_relevant_papers(body.items, body.query)
+    # relevant_papers = filter_relevant_papers(body.items, body.query)
     # print("[rank] After filter:")
     # for p in relevant_papers:
     #     print(f"  - {p.get('title', 'N/A')[:70]}")
 
-    chunks = chunk_all_papers(relevant_papers)
+    chunks = chunk_all_papers(body.items)
 
     if not chunks:
         return {"sections": [], "status": "no_results"}
 
     # Step 2 — embed + rank chunks (top 5)
-    top_chunks = rank_chunks(body.query, chunks, top_n=5)
-
+    top_chunks = rank_chunks(body.query, chunks, top_n=10)
+    # print("top_chunks :", top_chunks)
+    # return {"message":"checking filter"}
     # Step 3 — build cited context
     context, sources = build_context_from_chunks(top_chunks)
+    # return 
     # print(f"[rank] context size: {len(context.split())} words")
     # print("Context :", context)
     # return {"message":"checking filter"}
@@ -47,7 +49,7 @@ async def answer_medical_query(body: RankRequest) -> dict:
 
     # Step 4 — single LLM call
     raw_answer = await generate_cited_answer(body.query, context)
-    print("Answer of LLM: ", raw_answer)
+    # print("Answer of LLM: ", raw_answer)
     # Step 5 — attach full source metadata per sentence
     result = attach_sources_to_sentences(raw_answer, sources)
 

@@ -152,17 +152,17 @@ async def expand_query(user_query: str) -> list[str]:
     """
     prompt = f"""You are a medical literature search expert.
 
-Convert this user question into 3 PubMed search queries.
+Convert this user question into 8 PubMed search queries.
 
 User question: "{user_query}"
 
 Rules:
 - Treat the ENTIRE user question as one unified topic — never split it into parts
-- If the question contains a disease name, ALL 3 queries MUST include that disease
+- If the question contains a disease name, ALL 8 queries MUST include that disease
 - Use specific medical/clinical terms
 - AVOID generic words: "indicators", "physiological", "warning", "methods", "factors"
 - Each query must be 3-6 words maximum
-- Return ONLY a JSON array of 3 strings, nothing else
+- Return ONLY a JSON array of 8 strings, nothing else
 
 Examples:
 
@@ -194,7 +194,7 @@ User question: "what causes diabetes":
             contents=prompt,
             config=types.GenerateContentConfig(
                 temperature=0.3,
-                max_output_tokens=200,
+                max_output_tokens=500,
                 thinking_config=types.ThinkingConfig(thinking_budget=0),
                 response_mime_type="application/json",
             )
@@ -209,7 +209,7 @@ User question: "what causes diabetes":
         #     queries.append(user_query)
 
         print(f"[QueryExpander] Expanded to: {queries}")
-        return queries[:3]   # max 3 queries
+        return queries[:8]   # max 3 queries
 
     except Exception as e:
         print(f"[QueryExpander] Failed, using original: {e}")
