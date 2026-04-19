@@ -23,23 +23,6 @@ An intelligent medical research assistant that answers health queries using evid
 ---
 
 ## 🏗️ Architecture
-
-```
-┌─────────────────┐        ┌──────────────────────┐        ┌─────────────────────┐
-│                 │        │                      │        │                     │
-│  React Frontend │──────▶ │  Express API (Node)  │──────▶ │ FastAPI AI Service  │
-│   (Vercel)      │        │    (Render)          │        │    (Render)         │
-│                 │        │                      │        │                     │
-└─────────────────┘        └──────────────────────┘        └─────────────────────┘
-│                               │
-│                               │
-┌──────▼──────┐              ┌────────▼────────┐
-│  MongoDB    │              │ Sentence        │
-│  Atlas      │              │ Transformers +  │
-│             │              │ Gemini API      │
-└─────────────┘              └─────────────────┘
-```
-
 **Request flow:**
 1. User sends query → Express API
 2. Express calls FastAPI to expand query into clinical search terms
