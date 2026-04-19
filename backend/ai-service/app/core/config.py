@@ -11,7 +11,7 @@ OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
 MODEL = os.getenv("MODEL_NAME")
 print("model using:", MODEL)
 # embedding model
-EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 # ranking weights
 # SIMILARITY_WEIGHT = 0.5
