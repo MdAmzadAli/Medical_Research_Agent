@@ -1,8 +1,6 @@
 # 🧬 MedResearch AI
 
-> **Live Demo:** [https://your-frontend.vercel.app](https://your-frontend.vercel.app)  
-> **API:** [https://your-api.onrender.com](https://your-api.onrender.com)  
-> **AI Service:** [https://your-ai-service.onrender.com](https://your-ai-service.onrender.com)
+> **Live Demo:** [https://medical-research-agent-ruby.vercel.app/](https://medical-research-agent-ruby.vercel.app/)  
 
 ---
 
